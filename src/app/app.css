@@ -1,0 +1,38 @@
+nav {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+}
+
+nav ul {
+  display: flex;
+  /* Pone los elementos en fila */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 20px;
+  /* Espacio entre elementos */
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(143, 0, 0);
+}
+
+header {
+  background-color: #000000;
+  padding: 20px 0;
+  margin: 0;
+}
+
+nav a {
+  color: rgb(27, 226, 9);
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #00bcd4;
+}

@@ -1,0 +1,46 @@
+nav {
+  display: flex;
+  justify-content: center;
+  /* Centra horizontalmente */
+}
+
+
+h1 {
+  color: rgb(172, 49, 151);
+  font-weight: bold;
+  text-align: center;
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/fondos/Fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgb(27, 226, 9);
+  padding: 20px;
+  margin-top: auto;
+  text-align: center;
+  font-weight: bold;
+  border-top: 2px solid rgb(27, 226, 9);
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer span {
+  margin: 0 10px;
+}
