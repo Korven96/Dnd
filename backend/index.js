@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const monstruosRoutes = require('./routes/monstruos');
+const razasRoutes = require('./routes/razas');
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/monstruos', monstruosRoutes);
+app.use('/api/razas', razasRoutes);
 
 // Prueba de que el servidor funciona
 app.get('/', (req, res) => {

@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 export interface Monstruo {
   id: number;
   nombre: string;
-  tipo: string;
-  alineamiento: string;
+  tipo: number;
+  tamano: number;
+  alineamiento: number;
   clase_armadura: number;
   puntos_golpe: number;
   velocidad: number;

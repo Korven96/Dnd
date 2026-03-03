@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MonstruosService, Monstruo } from '../../../services/monstruos';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-monstruo-detail',
@@ -24,12 +23,8 @@ export class MonstruoDetailComponent {
     this.monstruo$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const id = Number(params.get('id'));
-        return this.monstruosService.getMonstruo(id);
+        return this.monstruosService.getMonstruo(id).pipe(catchError(() => of(null)));
       }),
-      catchError(() => {
-        console.error('No se pudo cargar el monstruo');
-        return of(null);
-      })
     );
   }
 
@@ -38,7 +33,7 @@ export class MonstruoDetailComponent {
     return mod >= 0 ? `+${mod}` : `${mod}`;
   }
 
-  getAccionesPorTipo(monstruo: Monstruo | null, tipo: string) {
+  getAccionesPorTipo(monstruo: Monstruo, tipo: string) {
     return monstruo?.acciones.filter((a) => a.tipo === tipo) || [];
   }
 
