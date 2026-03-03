@@ -8,8 +8,26 @@
         <li><a routerLink="/hechizos">Hechizos</a></li>
         <li><a routerLink="/objetos">Objetos</a></li>
       </ul>
-    </nav>
-  </header>
+
+  <div  class="auth-btn">
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="authMenu">
+      <mat-icon>account_circle</mat-icon>
+      Usuario
+    </button>
+
+    <mat-menu #authMenu="matMenu">
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>login</mat-icon>
+        <span>Iniciar sesión</span>
+      </button>
+      <button mat-menu-item routerLink="/register">
+        <mat-icon>person_add</mat-icon>
+        <span>Crear cuenta</span>
+      </button>
+    </mat-menu>
+    </div>
+  </nav>
+</header>
 
 
 

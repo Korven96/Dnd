@@ -1,0 +1,99 @@
+<div class="ficha-container" *ngIf="monstruo$ | async as monstruo">
+
+  <!-- Botón volver -->
+  <button class="btn-volver" (click)="volver()">← Volver</button>
+
+  <!-- Cabecera -->
+  <div class="ficha-header">
+    <h1>{{ monstruo.nombre }}</h1>
+    <p class="subtitulo">{{ monstruo.tipo }} — {{ monstruo.alineamiento }}</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Stats básicos -->
+  <div class="stats-basicos">
+    <p><strong>Clase de Armadura:</strong> {{ monstruo.clase_armadura }}</p>
+    <p><strong>Puntos de Golpe:</strong> {{ monstruo.puntos_golpe }}</p>
+    <p><strong>Velocidad:</strong> {{ monstruo.velocidad }} ft</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Tabla de atributos -->
+  <table class="tabla-atributos">
+    <thead>
+      <tr>
+        <th *ngFor="let atr of monstruo.atributos">{{ atr.nombre }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let atr of monstruo.atributos">
+          {{ atr.valor }} ({{ getModificador(atr.valor) }})
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="divisor">
+
+  <!-- Habilidades -->
+  <div class="seccion" *ngIf="monstruo.habilidades.length">
+    <p>
+      <strong>Habilidades:</strong>
+      <span *ngFor="let hab of monstruo.habilidades; let last = last">
+        {{ hab.nombre }} {{ hab.modificador >= 0 ? '+' : '' }}{{ hab.modificador }}{{ last ? '' : ', ' }}
+      </span>
+    </p>
+  </div>
+
+  <!-- Info extra -->
+  <div class="seccion">
+    <p><strong>Percepción Pasiva:</strong> {{ monstruo.percepcion_pasiva }}</p>
+    <p><strong>Bonificador de Competencia:</strong> +{{ monstruo.bonificador_competencia }}</p>
+    <p><strong>Desafío:</strong> {{ monstruo.desafio }}</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Rasgos -->
+  <div class="seccion" *ngIf="monstruo.rasgos.length">
+    <h3>Rasgos</h3>
+    <div *ngFor="let rasgo of monstruo.rasgos" class="rasgo">
+      <p><strong>{{ rasgo.nombre }}.</strong> {{ rasgo.descripcion }}</p>
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Acciones -->
+  <div class="seccion" *ngIf="getAccionesPorTipo(monstruo, 'accion').length">
+    <h3>Acciones</h3>
+    <div *ngFor="let accion of getAccionesPorTipo(monstruo, 'accion')" class="accion">
+      <p><strong>{{ accion.nombre }}.</strong> {{ accion.descripcion }}</p>
+    </div>
+  </div>
+
+  <!-- Reacciones -->
+  <div class="seccion" *ngIf="getAccionesPorTipo(monstruo, 'reaccion').length">
+    <h3>Reacciones</h3>
+    <div *ngFor="let accion of getAccionesPorTipo(monstruo, 'reaccion')" class="accion">
+      <p><strong>{{ accion.nombre }}.</strong> {{ accion.descripcion }}</p>
+    </div>
+  </div>
+
+  <!-- Acciones bonus -->
+  <div class="seccion" *ngIf="getAccionesPorTipo(monstruo, 'accion_bonus').length">
+    <h3>Acciones de Bonus</h3>
+    <div *ngFor="let accion of getAccionesPorTipo(monstruo, 'accion_bonus')" class="accion">
+      <p><strong>{{ accion.nombre }}.</strong> {{ accion.descripcion }}</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Cargando fallback -->
+<div *ngIf="!(monstruo$ | async)" class="estado">
+  Cargando...
+</div>

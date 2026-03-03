@@ -1,34 +1,28 @@
+header {
+  background-color: #000000;
+  padding: 20px 24px; /* agregamos padding lateral */
+  margin: 0;
+}
+
 nav {
   display: flex;
-  justify-content: center;
-  /* Centra horizontalmente */
+  align-items: center;
+  justify-content: space-between; /* ← esto separa links y botón */
 }
 
 nav ul {
   display: flex;
-  /* Pone los elementos en fila */
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto; /* centra los links */
 }
 
 nav li {
   margin: 0 20px;
-  /* Espacio entre elementos */
 }
 
 nav a {
   text-decoration: none;
-  color: rgb(143, 0, 0);
-}
-
-header {
-  background-color: #000000;
-  padding: 20px 0;
-  margin: 0;
-}
-
-nav a {
   color: rgb(27, 226, 9);
   font-weight: bold;
 }

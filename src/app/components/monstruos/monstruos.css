@@ -1,0 +1,58 @@
+.monstruos-container {
+  padding: 24px;
+}
+
+.monstruos-container h2 {
+  color: rgb(27, 226, 9);
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.lista-monstruos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.monstruo-card {
+  background-color: #1a1a2e;
+  border: 1px solid rgb(27, 226, 9);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.monstruo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(27, 226, 9, 0.3);
+}
+
+.monstruo-card h3 {
+  color: rgb(0, 0, 0);
+  margin: 0 0 8px 0;
+}
+
+.monstruo-card p {
+  color: #000000;
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+}
+
+.desafio {
+  background-color: rgb(27, 226, 9);
+  color: black;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.estado {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+}
+
+.error {
+  color: red;
+}

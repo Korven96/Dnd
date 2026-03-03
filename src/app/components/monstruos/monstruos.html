@@ -1,1 +1,27 @@
+<div class="monstruos-container">
 
+  <h2>Monstruos</h2>
+
+  <!-- Lista de monstruos con AsyncPipe -->
+  <div class="lista-monstruos" *ngIf="monstruos$ | async as monstruos">
+    <ng-container *ngIf="monstruos.length > 0">
+      <div
+        class="monstruo-card"
+        *ngFor="let monstruo of monstruos"
+        (click)="verDetalle(monstruo.id)">
+        <h3>{{ monstruo.nombre }}</h3>
+        <p>{{ monstruo.tipo }}</p>
+        <span class="desafio">CR {{ monstruo.desafio }}</span>
+      </div>
+    </ng-container>
+    <div *ngIf="monstruos.length === 0" class="estado">
+      No hay monstruos disponibles
+    </div>
+  </div>
+
+  <!-- Cargando fallback -->
+  <div *ngIf="!(monstruos$ | async) as value" class="estado">
+    Cargando monstruos...
+  </div>
+
+</div>
