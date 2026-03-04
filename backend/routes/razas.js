@@ -57,7 +57,18 @@ router.get('/:id', async (req, res) => {
       [id],
     );
 
-    // 4. Subrazas
+    // 4. Idiomas
+    const [idiomas] = await db.query(
+      `
+        SELECT i.nombre
+        FROM raza_idiomas ri
+        JOIN idiomas i ON i.id = ri.idioma_id
+        WHERE ri.raza_id = ?
+      `,
+      [id],
+    );
+
+    // 5. Subrazas
     const [subrazas] = await db.query(
       `
       SELECT s.id, s.nombre, s.descripcion
@@ -67,7 +78,7 @@ router.get('/:id', async (req, res) => {
       [id],
     );
 
-    // 5. Bonificadores de cada subraza
+    // 6. Bonificadores de cada subraza
     for (let subraza of subrazas) {
       const [bonificadoresSubraza] = await db.query(
         `
@@ -81,11 +92,12 @@ router.get('/:id', async (req, res) => {
       subraza.bonificadores = bonificadoresSubraza;
     }
 
-    // 6. JSON estructurado
+    // 7. JSON estructurado
     res.json({
       ...raza[0],
       rasgos,
       bonificadores,
+      idiomas,
       subrazas,
     });
   } catch (error) {

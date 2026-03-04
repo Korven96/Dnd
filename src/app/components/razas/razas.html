@@ -1,1 +1,26 @@
+<div class="razas-container">
 
+  <h2>Razas</h2>
+
+  <!-- Lista de razas con AsyncPipe -->
+  <div class="lista-razas" *ngIf="razas$ | async as razas">
+    <ng-container *ngIf="razas.length > 0">
+      <div
+        class="raza-card"
+        *ngFor="let raza of razas"
+        (click)="verDetalle(raza.id)">
+        <h3>{{ raza.nombre }}</h3>
+        <p>{{ raza.descripcion }}</p>
+      </div>
+    </ng-container>
+    <div *ngIf="razas.length === 0" class="estado">
+      No hay razas disponibles
+    </div>
+  </div>
+
+  <!-- Cargando fallback -->
+  <div *ngIf="!(razas$ | async) as value" class="estado">
+    Cargando razas...
+  </div>
+
+</div>

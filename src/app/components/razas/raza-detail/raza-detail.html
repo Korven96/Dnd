@@ -1,1 +1,84 @@
-<p>raza-detail works!</p>
+<div class="ficha-container" *ngIf="raza$ | async as raza">
+
+  <!-- Botón volver -->
+  <button class="btn-volver" (click)="volver()">← Volver</button>
+
+  <!-- Cabecera -->
+  <div class="ficha-header">
+    <h1>{{ raza.nombre }}</h1>
+    <p class="subtitulo">{{ raza.tamano }} — {{ raza.velocidad_base }} ft</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Descripción -->
+  <div class="seccion">
+    <p>{{ raza.descripcion }}</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Bonificadores de raza -->
+  <div class="seccion" *ngIf="raza.bonificadores.length">
+    <h3>Incremento de Puntuación de Característica</h3>
+    <div *ngFor="let bon of raza.bonificadores">
+      <p *ngIf="bon.tipo === 'atributo'">
+        <strong>+{{ bon.valor }}</strong> {{ bon.atributo }}
+      </p>
+      <p *ngIf="bon.tipo !== 'atributo'">
+        {{ bon.descripcion }}
+      </p>
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <div class="seccion" *ngIf="raza.idiomas.length">
+    <h3>Idiomas</h3>
+    <p>
+      <span *ngFor="let idioma of raza.idiomas; let last = last">
+        {{ idioma.nombre }}{{ last ? '' : ', ' }}
+      </span>
+    </p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Rasgos -->
+  <div class="seccion" *ngIf="raza.rasgos.length">
+    <h3>Rasgos Raciales</h3>
+    <div *ngFor="let rasgo of raza.rasgos" class="rasgo">
+      <p><strong>{{ rasgo.nombre }}.</strong> {{ rasgo.descripcion }}</p>
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Subrazas -->
+  <div class="seccion" *ngIf="raza.subrazas.length">
+    <h3>Subrazas</h3>
+    <div *ngFor="let subraza of raza.subrazas" class="subraza-card">
+      <h4>{{ subraza.nombre }}</h4>
+      <p>{{ subraza.descripcion }}</p>
+
+      <!-- Bonificadores de subraza -->
+      <div *ngIf="subraza.bonificadores.length" class="bonificadores">
+        <div *ngFor="let bon of subraza.bonificadores">
+          <p *ngIf="bon.tipo === 'atributo'">
+            <strong>+{{ bon.valor }}</strong> {{ bon.atributo }}
+          </p>
+          <p *ngIf="bon.tipo !== 'atributo'">
+            {{ bon.descripcion }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Cargando fallback -->
+<div *ngIf="!(raza$ | async)" class="estado">
+  Cargando...
+</div>

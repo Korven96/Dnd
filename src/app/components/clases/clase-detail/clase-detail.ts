@@ -1,34 +1,34 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RazasService, Raza } from '../../../services/razas';
+import { ClasesService, Clase } from '../../../services/clases';
 import { Observable, of } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-raza-detail',
+  selector: 'app-clase-detail',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './raza-detail.html',
-  styleUrls: ['./raza-detail.css'],
+  templateUrl: './clase-detail.html',
+  styleUrls: ['./clase-detail.css'],
 })
-export class RazaDetailComponent {
-  raza$: Observable<Raza | null>;
+export class ClaseDetailComponent {
+  clase$: Observable<Clase | null>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private razasService: RazasService,
+    private clasesService: ClasesService,
   ) {
-    this.raza$ = this.route.paramMap.pipe(
+    this.clase$ = this.route.paramMap.pipe(
       switchMap((params) => {
         const id = Number(params.get('id'));
-        return this.razasService.getRaza(id).pipe(catchError(() => of(null)));
+        return this.clasesService.getClase(id).pipe(catchError(() => of(null)));
       }),
     );
   }
 
   volver(): void {
-    this.router.navigate(['/razas']);
+    this.router.navigate(['/clases']);
   }
 }

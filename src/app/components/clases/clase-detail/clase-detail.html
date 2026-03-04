@@ -1,0 +1,98 @@
+<div class="ficha-container"
+  *ngIf="clase$ | async as clase"
+  [style.border-color]="clase.color_primario"
+  [style.box-shadow]="'0 0 20px ' + clase.color_primario + '44'">
+
+  <button class="btn-volver"
+    (click)="volver()"
+    [style.border-color]="clase.color_primario"
+    [style.color]="clase.color_primario">
+    ← Volver
+  </button>
+
+ <div class="ficha-header">
+  <h1 [style.color]="clase.color_primario">{{ clase.nombre }}</h1>
+  <div class="clase-info">
+    <span class="dado"
+      [style.border-color]="clase.color_primario"
+      [style.color]="clase.color_primario"
+      [style.background-color]="clase.color_primario + '22'">
+      🎲 Dado de Golpe: d{{ clase.dado_golpe }}
+    </span>
+    <span class="lanzador"
+      [style.border-color]="clase.color_primario"
+      [style.color]="clase.color_primario"
+      [style.background-color]="clase.color_primario + '22'">
+      ✨ Lanzador: {{ clase.tipo_lanzador }}
+    </span>
+    <!-- Icono después del lanzador -->
+    <span class="icono-clase" [style.color]="clase.color_primario">
+      {{ clase.icono }}
+    </span>
+  </div>
+</div>
+
+
+  <hr class="divisor">
+
+  <!-- Descripción -->
+  <div class="seccion">
+    <p>{{ clase.descripcion }}</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Rasgos de clase por nivel -->
+  <div class="seccion" *ngIf="clase.rasgos.length">
+    <h3>Rasgos de Clase</h3>
+    <div *ngFor="let rasgo of clase.rasgos" class="rasgo">
+      <div class="rasgo-header">
+        <strong>{{ rasgo.nombre }}</strong>
+        <span class="nivel-badge">Nivel {{ rasgo.nivel_requerido }}</span>
+      </div>
+      <p>{{ rasgo.descripcion }}</p>
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Subclases -->
+  <div class="seccion" *ngIf="clase.subclases.length">
+    <h3>Subclases</h3>
+    <div *ngFor="let subclase of clase.subclases" class="subclase-card">
+      <h4>{{ subclase.nombre }}</h4>
+      <p>{{ subclase.descripcion }}</p>
+
+      <!-- Rasgos de subclase -->
+      <div *ngIf="subclase.rasgos.length" class="subclase-rasgos">
+        <h5>Rasgos</h5>
+        <div *ngFor="let rasgo of subclase.rasgos" class="rasgo">
+          <div class="rasgo-header">
+            <strong>{{ rasgo.nombre }}</strong>
+            <span class="nivel-badge">Nivel {{ rasgo.nivel_requerido }}</span>
+          </div>
+          <p>{{ rasgo.descripcion }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Hechizos -->
+  <div class="seccion" *ngIf="clase.hechizos.length">
+    <h3>Hechizos</h3>
+    <div class="lista-hechizos">
+      <span *ngFor="let hechizo of clase.hechizos" class="hechizo-badge">
+        {{ hechizo.nombre }}
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Cargando fallback -->
+<div *ngIf="!(clase$ | async)" class="estado">
+  Cargando...
+</div>

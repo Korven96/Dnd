@@ -1,0 +1,97 @@
+.ficha-container {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 24px;
+  background-color: #1a1a2e;
+  border: 1px solid rgb(27, 226, 9);
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+}
+
+.btn-volver {
+  background: none;
+  border: 1px solid rgb(27, 226, 9);
+  color: rgb(27, 226, 9);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.btn-volver:hover {
+  background-color: rgb(27, 226, 9);
+  color: rgb(255, 255, 255);
+}
+
+.ficha-header h1 {
+  color: rgb(27, 226, 9);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subtitulo {
+  color: #ffffff;
+  font-style: italic;
+  margin: 4px 0;
+}
+
+.divisor {
+  border: none;
+  border-top: 1px solid rgb(27, 226, 9);
+  margin: 16px 0;
+}
+
+.seccion {
+  margin: 12px 0;
+}
+
+.seccion h3 {
+  color: rgb(27, 226, 9);
+  border-bottom: 1px solid rgb(27, 226, 9);
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+.rasgo p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.subraza-card {
+  background-color: #50b8e9;
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.subraza-card h4 {
+  color: rgb(27, 226, 9);
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+}
+
+.subraza-card p {
+  color: #ffffff;
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+.bonificadores {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(27, 226, 9, 0.2);
+}
+
+.bonificadores p {
+  color: rgb(27, 226, 9) !important;
+  margin: 4px 0;
+}
+
+.estado {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  padding: 24px;
+}

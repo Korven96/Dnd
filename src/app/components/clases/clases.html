@@ -1,1 +1,38 @@
+<div class="clases-container">
+  <h2>Clases</h2>
 
+  <div class="lista-clases" *ngIf="clases$ | async as clases">
+    <ng-container *ngIf="clases.length > 0">
+      <div
+        class="clase-card"
+        *ngFor="let clase of clases"
+        (click)="verDetalle(clase.id)"
+        [style.border-color]="clase.color_primario"
+        [style.box-shadow]="'0 0 10px ' + clase.color_primario + '44'">
+
+        <!-- Icono esquina superior derecha -->
+        <div class="clase-icono-top" [style.color]="clase.color_primario">
+          {{ clase.icono }}
+        </div>
+
+        <h3 [style.color]="clase.color_primario">{{ clase.nombre }}</h3>
+        <p>{{ clase.descripcion }}</p>
+        <div class="clase-info">
+          <span class="dado" [style.border-color]="clase.color_primario" [style.color]="clase.color_primario">
+            🎲 d{{ clase.dado_golpe }}
+          </span>
+          <span class="lanzador" [style.border-color]="clase.color_primario" [style.color]="clase.color_primario">
+            ✨ {{ clase.tipo_lanzador }}
+          </span>
+        </div>
+      </div>
+    </ng-container>
+    <div *ngIf="clases.length === 0" class="estado">
+      No hay clases disponibles
+    </div>
+  </div>
+
+  <div *ngIf="!(clases$ | async)" class="estado">
+    Cargando clases...
+  </div>
+</div>

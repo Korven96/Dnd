@@ -1,0 +1,158 @@
+.ficha-container {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 24px;
+  background-color: #1a1a2e;
+  border: 1px solid rgb(27, 226, 9);
+  border-radius: 8px;
+  color: white;
+}
+
+.btn-volver {
+  background: none;
+  border: 1px solid rgb(27, 226, 9);
+  color: rgb(27, 226, 9);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.btn-volver:hover {
+  background-color: rgb(27, 226, 9);
+  color: black;
+}
+
+.ficha-header h1 {
+  color: rgb(27, 226, 9);
+  font-size: 2rem;
+  margin: 0 0 24px 0;
+}
+
+.clase-info {
+  display: flex;
+  gap: 12px;
+}
+
+.dado,
+.lanzador {
+  background-color: rgba(27, 226, 9, 0.1);
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  color: rgb(27, 226, 9);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.divisor {
+  border: none;
+  border-top: 1px solid rgb(27, 226, 9);
+  margin: 16px 0;
+}
+
+.seccion {
+  margin: 12px 0;
+}
+
+.seccion h3 {
+  color: rgb(27, 226, 9);
+  border-bottom: 1px solid rgb(27, 226, 9);
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+.rasgo {
+  margin-bottom: 16px;
+}
+
+.rasgo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.rasgo-header strong {
+  color: rgb(27, 226, 9);
+  font-size: 1rem;
+}
+
+.nivel-badge {
+  background-color: rgba(27, 226, 9, 0.1);
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  color: rgb(27, 226, 9);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.rasgo p {
+  color: #ccc;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.subclase-card {
+  background-color: #0d0d1a;
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.subclase-card h4 {
+  color: rgb(27, 226, 9);
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+}
+
+.subclase-card p {
+  color: #ccc;
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+}
+
+.subclase-rasgos {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(27, 226, 9, 0.2);
+}
+
+.subclase-rasgos h5 {
+  color: rgb(27, 226, 9);
+  margin: 0 0 12px 0;
+}
+
+.lista-hechizos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hechizo-badge {
+  background-color: rgba(27, 226, 9, 0.1);
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  color: rgb(27, 226, 9);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.estado {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  padding: 24px;
+}
+
+.header-icono {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.icono-clase {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,80 @@
+.clases-container {
+  padding: 24px;
+}
+
+.clases-container h2 {
+  color: rgb(27, 226, 9);
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.lista-clases {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.clase-card {
+  background-color: #1a1a2e;
+  border: 1px solid rgb(27, 226, 9);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.clase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(27, 226, 9, 0.3);
+}
+
+.clase-card h3 {
+  color: rgb(27, 226, 9);
+  margin: 0 0 8px 0;
+}
+
+.clase-card p {
+  color: #aaa;
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clase-info {
+  display: flex;
+  gap: 12px;
+}
+
+.dado,
+.lanzador {
+  background-color: rgba(27, 226, 9, 0.1);
+  border: 1px solid rgba(27, 226, 9, 0.3);
+  color: rgb(27, 226, 9);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.estado {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  padding: 24px;
+  text-align: center;
+}
+
+.clase-icono {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.clase-icono-top {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 1.8rem;
+}
+

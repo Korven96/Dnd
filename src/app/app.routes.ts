@@ -1,7 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 import { Home } from './components/home/home';
-import { Razas } from './components/razas/razas';
-import { Clases } from './components/clases/clases';
+import { RazasComponent } from './components/razas/razas';
+import { RazaDetailComponent } from './components/razas/raza-detail/raza-detail';
+import { ClasesComponent } from './components/clases/clases';
+import { ClaseDetailComponent } from './components/clases/clase-detail/clase-detail';
 import { Hechizos } from './components/hechizos/hechizos';
 import { Crearpersonaje } from './components/crearpersonaje/crearpersonaje';
 import { Objetos } from './components/objetos/objetos';
@@ -16,8 +18,10 @@ import { MonstruoDetailComponent } from './components/monstruos/monstruo-detail/
 export const routes: Routes = [
   { path: '', component: Home }, // Ruta raíz
   { path: 'home', component: Home }, // Ruta explícita
-  { path: 'razas', component: Razas, title :'Razas', }, // Ruta para las razas
-  { path: 'clases', component: Clases, title :'Clases'}, // Ruta para las clases
+  { path: 'razas', component: RazasComponent, title :'Razas', }, // Ruta para las razas
+  { path: 'razas/:id', component: RazaDetailComponent }, // Ruta para el detalle de raza
+  { path: 'clases', component: ClasesComponent, title :'Clases'}, // Ruta para las clases
+  { path: 'clases/:id', component: ClaseDetailComponent }, // Ruta para el detalle de clase
   { path: 'hechizos', component: Hechizos, title :'Hechizos'}, // Ruta para los hechizos
   { path: 'crearpersonaje', component: Crearpersonaje, title :'Crear Personaje'}, // Ruta para crear personaje
   { path: 'monstruos', component: MonstruosComponent, title :'Monstruos'}, // Ruta para los monstruos

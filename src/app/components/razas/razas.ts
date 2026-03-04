@@ -1,11 +1,33 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RazasService, Raza } from '../../services/razas';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-razas',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './razas.html',
-  styleUrl: './razas.css',
+  styleUrls: ['./razas.css'],
 })
-export class Razas {
+export class RazasComponent {
+  razas$: Observable<Raza[]>;
 
+  constructor(
+    private razasService: RazasService,
+    private router: Router,
+  ) {
+    this.razas$ = this.razasService.getRazas().pipe(
+      catchError(() => {
+        console.error('Error al cargar razas');
+        return of([]);
+      }),
+    );
+  }
+  verDetalle(id: number): void {
+    this.router.navigate(['/razas', id]);
+  }
 }
