@@ -29,19 +29,19 @@
 }
 
 .monstruo-card h3 {
-  color: rgb(0, 0, 0);
+  color: rgb(27, 226, 9);
   margin: 0 0 8px 0;
 }
 
 .monstruo-card p {
-  color: #000000;
+  color: rgb(27, 226, 9);
   margin: 0 0 8px 0;
   font-size: 0.9rem;
 }
 
 .desafio {
   background-color: rgb(27, 226, 9);
-  color: black;
+  color: #007969;
   padding: 2px 8px;
   border-radius: 12px;
   font-size: 0.8rem;
