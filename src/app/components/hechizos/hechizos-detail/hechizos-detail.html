@@ -1,0 +1,46 @@
+<div class="ficha-container" *ngIf="hechizo$ | async as hechizo">
+
+  <!-- Botón volver -->
+  <button class="btn-volver" (click)="volver()">← Volver</button>
+
+  <!-- Cabecera -->
+  <div class="ficha-header">
+    <div class="header-top">
+      <h1>{{ hechizo.nombre }}</h1>
+      <span class="nivel-badge">{{ getNivelTexto(hechizo.nivel) }}</span>
+    </div>
+    <p class="escuela">{{ hechizo.escuela }}</p>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Info básica -->
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="info-label">Tiempo de lanzamiento</span>
+      <span class="info-valor">⏱ {{ hechizo.tiempo_lanzamiento }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Duración</span>
+      <span class="info-valor">⌛ {{ hechizo.duracion }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Concentración</span>
+      <span class="info-valor">{{ hechizo.concentracion ? '🎯 Sí' : '❌ No' }}</span>
+    </div>
+  </div>
+
+  <hr class="divisor">
+
+  <!-- Descripción -->
+  <div class="seccion">
+    <h3>Descripción</h3>
+    <p>{{ hechizo.descripcion }}</p>
+  </div>
+
+</div>
+
+<!-- Cargando fallback -->
+<div *ngIf="!(hechizo$ | async)" class="estado">
+  Cargando...
+</div>

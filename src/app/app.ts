@@ -3,35 +3,56 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-
-import { Usuario } from './models/user.model';
-import { Post } from './models/post.modul';
+import { CommonModule } from '@angular/common';
+import { AuthDialogComponent } from './components/auth/auth-dialog/auth-dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatMenuModule, MatButtonModule, MatIconModule, HttpClientModule],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    HttpClientModule,
+    CommonModule,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('dnd');
+  usuario: any = null;
 
-  public usuario: Usuario;
-  public posts: Post;
-
-  constructor() {
-    this.usuario = {
-      nombre: 'Javier',
-      email: '',
-      edad: 29,
-      isAdmin: false
+  constructor(private dialog: MatDialog) {
+    // Recuperar usuario de localStorage si existe
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      this.usuario = JSON.parse(usuarioGuardado);
     }
+  }
 
-    this.posts = {
-      id: 0,
-      content: 'post de prueba',
-      user: this.usuario
-    }
+  abrirAuth(tabIndex: number = 0): void {
+    const dialogRef = this.dialog.open(AuthDialogComponent, {
+      width: '450px',
+      panelClass: 'auth-dialog-panel',
+      data: { tabIndex },
+    });
+
+    dialogRef.afterClosed().subscribe((usuario) => {
+      if (usuario) {
+        this.usuario = usuario;
+      }
+    });
+  }
+
+  cerrarSesion(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    this.usuario = null;
   }
 }

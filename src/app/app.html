@@ -1,35 +1,62 @@
+<header>
+  <nav>
+    <ul>
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/razas">Razas</a></li>
+      <li><a routerLink="/clases">Clases</a></li>
+      <li><a routerLink="/monstruos">Monstruos</a></li>
+      <li><a routerLink="/hechizos">Hechizos</a></li>
+      <li><a routerLink="/objetos">Objetos</a></li>
+    </ul>
 
-  <header>
-    <nav>
-      <ul>
-        <li><a routerLink="/">Inicio</a></li>
-        <li><a routerLink="/razas">Razas</a></li>
-        <li><a routerLink="/clases">Clases</a></li>
-        <li><a routerLink="/monstruos">Monstruos</a></li>
-        <li><a routerLink="/hechizos">Hechizos</a></li>
-        <li><a routerLink="/objetos">Objetos</a></li>
-      </ul>
+    <div class="auth-btn">
 
-  <div  class="auth-btn">
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="authMenu">
-      <mat-icon>account_circle</mat-icon>
-      Usuario
-    </button>
-
-    <mat-menu #authMenu="matMenu">
-      <button mat-menu-item routerLink="/login">
-        <mat-icon>login</mat-icon>
-        <span>Iniciar sesión</span>
+      <!-- Si NO está logueado -->
+      <button
+        mat-raised-button
+        color="primary"
+        [matMenuTriggerFor]="authMenu"
+        *ngIf="!usuario">
+        <mat-icon>account_circle</mat-icon>
+        Usuario
       </button>
-      <button mat-menu-item routerLink="/register">
-        <mat-icon>person_add</mat-icon>
-        <span>Crear cuenta</span>
+
+      <!-- Si está logueado -->
+      <button
+        mat-raised-button
+        color="primary"
+        [matMenuTriggerFor]="userMenu"
+        *ngIf="usuario">
+        <mat-icon>account_circle</mat-icon>
+        {{ usuario.username }}
       </button>
-    </mat-menu>
+
+      <!-- Menú sin sesión -->
+      <mat-menu #authMenu="matMenu">
+        <button mat-menu-item (click)="abrirAuth(0)">
+          <mat-icon>login</mat-icon>
+          <span>Iniciar sesión</span>
+        </button>
+        <button mat-menu-item (click)="abrirAuth(1)">
+          <mat-icon>person_add</mat-icon>
+          <span>Crear cuenta</span>
+        </button>
+      </mat-menu>
+
+      <!-- Menú con sesión -->
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/personajes">
+          <mat-icon>person</mat-icon>
+          <span>Mis personajes</span>
+        </button>
+        <button mat-menu-item (click)="cerrarSesion()">
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
+
     </div>
   </nav>
 </header>
-
-
 
 <router-outlet></router-outlet>

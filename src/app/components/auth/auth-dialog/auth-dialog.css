@@ -1,0 +1,88 @@
+.dialog-container {
+  padding: 24px;
+  background-color: #1a1a2e;
+  color: white;
+  min-width: 400px;
+}
+
+.dialog-titulo {
+  color: rgb(27, 226, 9);
+  text-align: center;
+  margin: 0 0 24px 0;
+  font-size: 1.5rem;
+}
+
+.tab-content {
+  padding: 24px 0;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Estilos para los campos de Material */
+::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: rgba(27, 226, 9, 0.5);
+  --mdc-outlined-text-field-focus-outline-color: rgb(27, 226, 9);
+  --mdc-outlined-text-field-label-text-color: #aaa;
+  --mdc-outlined-text-field-input-text-color: white;
+}
+
+::ng-deep .mat-mdc-input-element {
+  color: white !important;
+}
+
+::ng-deep .mat-mdc-tab-labels {
+  background-color: #1a1a2e;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+  color: #aaa !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: rgb(27, 226, 9) !important;
+}
+
+::ng-deep .mat-mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  border-color: rgb(27, 226, 9) !important;
+}
+
+.error-msg {
+  color: #ff4444;
+  font-size: 0.85rem;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+button[mat-raised-button] {
+  margin-top: 8px;
+  background-color: rgb(27, 226, 9) !important;
+  color: black !important;
+  font-weight: bold;
+}
+
+button[mat-raised-button]:disabled {
+  background-color: rgba(27, 226, 9, 0.3) !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+::ng-deep .mdc-floating-label {
+  color: #aaa !important;
+}
+
+::ng-deep .mdc-text-field--focused .mdc-floating-label {
+  color: #aaa !important;
+}
+
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline__notch,
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline__trailing {
+  border-color: #aaa !important;
+}
+
+::ng-deep .mdc-notched-outline--notched .mdc-notched-outline__notch {
+  border-top: none !important;
+  border-right: none !important;
+}

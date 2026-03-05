@@ -1,1 +1,39 @@
+<div class="hechizos-container">
 
+  <h2>Hechizos</h2>
+
+  <div class="lista-hechizos" *ngIf="hechizos$ | async as hechizos">
+    <ng-container *ngIf="hechizos.length > 0">
+      <div
+        class="hechizo-card"
+        *ngFor="let hechizo of hechizos"
+        (click)="verDetalle(hechizo.id)">
+
+        <!-- Cabecera de la card -->
+        <div class="hechizo-card-header">
+          <h3>{{ hechizo.nombre }}</h3>
+          <span class="nivel-badge">{{ getNivelTexto(hechizo.nivel) }}</span>
+        </div>
+
+        <!-- Info -->
+        <p class="escuela">{{ hechizo.escuela }}</p>
+        <div class="hechizo-info">
+          <span class="tag">⏱ {{ hechizo.tiempo_lanzamiento }}</span>
+          <span class="tag">⌛ {{ hechizo.duracion }}</span>
+          <span class="tag concentracion" *ngIf="hechizo.concentracion">
+            🎯 Concentración
+          </span>
+        </div>
+
+      </div>
+    </ng-container>
+    <div *ngIf="hechizos.length === 0" class="estado">
+      No hay hechizos disponibles
+    </div>
+  </div>
+
+  <div *ngIf="!(hechizos$ | async)" class="estado">
+    Cargando hechizos...
+  </div>
+
+</div>

@@ -4,6 +4,10 @@ const cors = require('cors');
 const monstruosRoutes = require('./routes/monstruos');
 const razasRoutes = require('./routes/razas');
 const clasesRoutes = require('./routes/clases');
+const hechizosRoutes = require('./routes/hechizos');
+const authRoutes = require('./routes/auth-dialog');
+
+
 
 const app = express();
 
@@ -14,6 +18,8 @@ app.use(express.json());
 app.use('/api/monstruos', monstruosRoutes);
 app.use('/api/razas', razasRoutes);
 app.use('/api/clases', clasesRoutes);
+app.use('/api/hechizos', hechizosRoutes);
+app.use('/api/auth-dialog', authRoutes);
 
 // Prueba de que el servidor funciona
 app.get('/', (req, res) => {

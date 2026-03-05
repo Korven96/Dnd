@@ -1,0 +1,108 @@
+.ficha-container {
+  max-width: 800px;
+  margin: 24px auto;
+  padding: 24px;
+  background-color: #1a1a2e;
+  border: 1px solid #9B59B6;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 0 20px rgba(155, 89, 182, 0.3);
+}
+
+.btn-volver {
+  background: none;
+  border: 1px solid #9B59B6;
+  color: #9B59B6;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.btn-volver:hover {
+  background-color: #9B59B6;
+  color: black;
+}
+
+.ficha-header {
+  margin-bottom: 8px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.ficha-header h1 {
+  color: #9B59B6;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.nivel-badge {
+  background-color: rgba(155, 89, 182, 0.2);
+  border: 1px solid #9B59B6;
+  color: #9B59B6;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.escuela {
+  color: #aaa;
+  font-style: italic;
+  margin: 0;
+}
+
+.divisor {
+  border: none;
+  border-top: 1px solid #9B59B6;
+  margin: 16px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  color: #9B59B6;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.info-valor {
+  color: white;
+  font-size: 0.95rem;
+}
+
+.seccion h3 {
+  color: #9B59B6;
+  border-bottom: 1px solid #9B59B6;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+.seccion p {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.estado {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  padding: 24px;
+}

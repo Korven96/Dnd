@@ -1,0 +1,116 @@
+<div class="dialog-container">
+
+  <h2 class="dialog-titulo">⚔️ Bienvenido Aventurero</h2>
+
+  <mat-tab-group animationDuration="300ms" [selectedIndex]="data.tabIndex">
+
+    <!-- PESTAÑA LOGIN -->
+    <mat-tab label="Iniciar Sesión">
+      <div class="tab-content">
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="tu@email.com">
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              El email es obligatorio
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+              El email no es válido
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="••••••">
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              La contraseña es obligatoria
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Mínimo 6 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Error general -->
+          <p class="error-msg" *ngIf="errorLogin">{{ errorLogin }}</p>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="full-width"
+            [disabled]="loginForm.invalid || cargando">
+            {{ cargando ? 'Entrando...' : 'Iniciar Sesión' }}
+          </button>
+
+        </form>
+      </div>
+    </mat-tab>
+
+    <!-- PESTAÑA REGISTRO -->
+    <mat-tab label="Crear Cuenta">
+      <div class="tab-content">
+
+        <form [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput formControlName="username" placeholder="Tu nombre de aventurero">
+            <mat-error *ngIf="registroForm.get('username')?.hasError('required')">
+              El nombre es obligatorio
+            </mat-error>
+            <mat-error *ngIf="registroForm.get('username')?.hasError('minlength')">
+              Mínimo 3 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="tu@email.com">
+            <mat-error *ngIf="registroForm.get('email')?.hasError('required')">
+              El email es obligatorio
+            </mat-error>
+            <mat-error *ngIf="registroForm.get('email')?.hasError('email')">
+              El email no es válido
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="••••••">
+            <mat-error *ngIf="registroForm.get('password')?.hasError('required')">
+              La contraseña es obligatoria
+            </mat-error>
+            <mat-error *ngIf="registroForm.get('password')?.hasError('minlength')">
+              Mínimo 6 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input matInput formControlName="confirmarPassword" type="password" placeholder="••••••">
+            <mat-error *ngIf="registroForm.hasError('noCoinciden')">
+              Las contraseñas no coinciden
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Error general -->
+          <p class="error-msg" *ngIf="errorRegistro">{{ errorRegistro }}</p>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="full-width"
+            [disabled]="registroForm.invalid || cargando">
+            {{ cargando ? 'Registrando...' : 'Crear Cuenta' }}
+          </button>
+
+        </form>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>
