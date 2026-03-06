@@ -34,15 +34,18 @@ router.post('/registro', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, 10);
 
     const [resultado] = await db.query(
-      // línea 8 - inserta en MySQL
+                                                    // línea 7 - inserta en MySQL
       'INSERT INTO usuarios (username, email, password_hash) VALUES (?, ?, ?)',
-      [username, email, passwordHash], // línea 9 - con estos valores
+      [username, email, passwordHash],              // línea 8 - con estos valores
     );
 
-    const token = jwt.sign({ id: resultado.insertId, username, email }, SECRET_KEY, {
-      expiresIn: '24h',
-    });
+    const token = jwt.sign(                         // línea 9 - crea un token JWT
+      { id, username, email },                      // línea 10 - con los datos del usuario
+      'dnd_secret_key_2024',                        // línea 11 - firmado con esta clave secreta
+      { expiresIn: '24h' },                         // línea 12 - válido durante 24 horas
+    );
 
+    // línea 13 - devuelve el token y usuario a Angular
     res.json({
       mensaje: 'Usuario registrado correctamente',
       token,
