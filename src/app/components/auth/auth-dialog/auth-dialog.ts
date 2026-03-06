@@ -83,26 +83,24 @@ export class AuthDialogComponent {
     this.cargando = true;
     this.errorRegistro = '';
 
-    const { username, email, password } = this.registroForm.value;
+    const { username, email, password } = this.registroForm.value; // línea 1 - recoge los datos del formulario
 
     this.http
-      .post<any>('http://localhost:3000/api/auth-dialog/registro', { username, email, password })
+      .post<any>(                                   // línea 2 - HttpClient hace una petición POST
+        'http://localhost:3000/api/auth/registro',  // línea 3 - a esta URL del backend
+        { username, email, password },              // línea 4 - enviando estos datos en formato JSON
+      )
       .subscribe({
-        next: (res) => {
-          const usuario = {
-            username: this.registroForm.value.username,
-            email: this.registroForm.value.email,
-          };
-
-          localStorage.setItem('usuario', JSON.stringify(usuario));
-
-          this.dialogRef.close(usuario);
-
-          this.cargando = false;
+        next: (res) => {                            // línea 5 - si todo va bien
+          localStorage.setItem('token', res.token); // línea 6 - guarda el token en el navegador
+          localStorage.setItem(
+            'usuario',                              // línea 7 - guarda el usuario en el navegador
+            JSON.stringify(res.usuario),
+          );
+          this.dialogRef.close(res.usuario);        // línea 8 - cierra el modal
         },
-        error: (err) => {
-          this.errorRegistro = err.error?.error || 'Error al registrarse';
-          this.cargando = false;
+        error: (err) => {                           // línea 9 - si hay error
+          this.errorRegistro = err.error?.error;    // línea 10 - muestra el mensaje de error
         },
       });
   }

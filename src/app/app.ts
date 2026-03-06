@@ -1,12 +1,25 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AuthDialogComponent } from './components/auth/auth-dialog/auth-dialog';
+
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    provideAnimations(),
+  ],
+};
 
 @Component({
   selector: 'app-root',
@@ -18,7 +31,6 @@ import { AuthDialogComponent } from './components/auth/auth-dialog/auth-dialog';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    HttpClientModule,
     CommonModule,
   ],
   templateUrl: './app.html',
@@ -28,7 +40,7 @@ export class App {
   protected readonly title = signal('dnd');
   usuario: any = null;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private cdr: ChangeDetectorRef) {
     // Recuperar usuario de localStorage si existe
     const usuarioGuardado = localStorage.getItem('usuario');
     if (usuarioGuardado) {
@@ -46,6 +58,7 @@ export class App {
     dialogRef.afterClosed().subscribe((usuario) => {
       if (usuario) {
         this.usuario = usuario;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -54,5 +67,6 @@ export class App {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     this.usuario = null;
+    this.cdr.detectChanges();
   }
 }
